@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   table_calendar: ^3.0.9
 
+  photo_view: ^0.14.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

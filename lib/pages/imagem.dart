@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ImageDesc extends StatefulWidget {
-  const ImageDesc({super.key});
+  final DateTime data;
+
+  const ImageDesc({required DateTime this.data, super.key});
 
   @override
   State<ImageDesc> createState() => _ImageDescState();
@@ -31,11 +34,12 @@ class _ImageDescState extends State<ImageDesc> {
                     Icon(color: Colors.white, Icons.arrow_back),
                     ElevatedButton(
                         style: ButtonStyle(
+                          fixedSize: MaterialStateProperty.all(Size.fromWidth(150)),
                           backgroundColor: MaterialStateProperty.all(
                               const Color.fromARGB(100, 255, 255, 255)),
                         ),
                         onPressed: () {},
-                        child: Text("02/11/23")),
+                        child: Text(DateFormat("dd/MM/yyyy").format(widget.data), style: TextStyle(color: Colors.white, fontSize: 20),)),
                     Icon(color: Colors.white, Icons.arrow_forward),
                   ],
                 ),
@@ -45,11 +49,16 @@ class _ImageDescState extends State<ImageDesc> {
                   child: Container(
                     margin: EdgeInsets.only(left: 5,right: 5, top: 15),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
                       color: const Color.fromARGB(75, 255, 255, 255),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("696969", style: TextStyle(color: Colors.white, fontSize: 18)),
+                      child: ListView(
+                        children: [
+                          Text("696969", style: TextStyle(color: Colors.white, fontSize: 18)),
+                        ],
+                      ),
                     ),
                   ),
                 )

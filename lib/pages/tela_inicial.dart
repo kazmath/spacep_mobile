@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_spacep/pages/calendario.dart';
+import 'package:mobile_spacep/pages/erro.dart';
 
 class TelaInicial extends StatefulWidget {
   TelaInicial({super.key});
@@ -91,9 +92,18 @@ class _TelaInicialState extends State<TelaInicial> {
                   "precisa de ",
                   style: TextStyle(color: Color(0xFF3A6D8E), fontSize: 20),
                 ),
-                Text(
-                  "ajuda?",
-                  style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
+                GestureDetector(
+                  onTap: () async {
+                    return await showDialog(
+                      context: context,
+                      builder: (context) => DialgErro(),
+                      barrierDismissible: false
+                    );
+                  },
+                  child: Text(
+                    "ajuda?",
+                    style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
+                  ),
                 )
               ],
             )
