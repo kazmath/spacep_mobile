@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile_spacep/pages/ajuda.dart';
+import 'package:mobile_spacep/pages/calendario.dart';
 import 'package:mobile_spacep/pages/erro.dart';
 import 'package:mobile_spacep/pages/imagem.dart';
 import 'package:mobile_spacep/pages/imagem_full.dart';
@@ -17,9 +19,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        //body: TelaInicial(),
-        //body: ImageFull(link: "http://placehold.co/400x600.png"),
-        body: TelaInicial()
+        body: TelaInicial(),
       ),
     );
   }

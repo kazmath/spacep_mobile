@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ImageFull extends StatelessWidget {
-   final String link;
+  final String link;
 
   const ImageFull({super.key, required this.link});
 
@@ -11,19 +11,19 @@ class ImageFull extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          PhotoView(
+          PhotoView(            
             imageProvider: NetworkImage(link),
             backgroundDecoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(
-                    "https://media.discordapp.net/attachments/444606048373047307/1168270986471293039/image.png",
-                  ),
+                  image: AssetImage("assets/background.png"),
                   fit: BoxFit.cover),
             ),
           ),
           SafeArea(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 margin: EdgeInsets.only(top: 10, left: 10),
                 padding: EdgeInsets.all(10.0),

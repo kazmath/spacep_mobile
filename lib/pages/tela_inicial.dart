@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_spacep/pages/ajuda.dart';
 import 'package:mobile_spacep/pages/calendario.dart';
 import 'package:mobile_spacep/pages/erro.dart';
 
@@ -23,10 +24,7 @@ class _TelaInicialState extends State<TelaInicial> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: NetworkImage(
-              "https://media.discordapp.net/attachments/444606048373047307/1168270986471293039/image.png",
-            ),
-            fit: BoxFit.cover),
+            image: AssetImage("assets/background.png"), fit: BoxFit.cover),
       ),
       child: Padding(
         padding: const EdgeInsets.all(51.0),
@@ -36,8 +34,7 @@ class _TelaInicialState extends State<TelaInicial> {
             Padding(
               padding: const EdgeInsets.all(26.0),
               child: Image(
-                image: NetworkImage(
-                    "https://media.discordapp.net/attachments/444606048373047307/1168271090196426922/image.png"),
+                image: AssetImage("assets/logo.png"),
               ),
             ),
             TextFormField(
@@ -64,11 +61,11 @@ class _TelaInicialState extends State<TelaInicial> {
                 ),
                 suffixIcon: GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return CalendarioSpaceP();
+                          return CalendarioSpaceP(APIKEY: "FUNCIONA");
                         },
                       ),
                     );
@@ -93,11 +90,12 @@ class _TelaInicialState extends State<TelaInicial> {
                   style: TextStyle(color: Color(0xFF3A6D8E), fontSize: 20),
                 ),
                 GestureDetector(
-                  onTap: () async {
-                    return await showDialog(
-                      context: context,
-                      builder: (context) => DialgErro(),
-                      barrierDismissible: false
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const TelaAjuda(),
+                      ),
                     );
                   },
                   child: Text(
