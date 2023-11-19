@@ -1,0 +1,77 @@
+{
+	"request": {
+		"method": "GET",
+		"url": "/media/save?APIKEY=1234qwertyQWERTY1234"
+	},
+	"response": {
+		"status": 200,
+		"jsonBody": [
+			{
+				"media_type": "video",
+				"url": "https://www.youtube.com/embed/xB3QIEkNJgs?rel=0",
+				"hdurl": null,
+				"title": "A Martian Dust Devil Spins By",
+				"explanation": "It moved across the surface of Mars -- what was it? A dust devil. Such spinning columns of rising air are heated by the warm surface and are also common in warm and dry areas on planet Earth.  Typically lasting only a few minutes, dust devils become visible as they pick up loose red-colored dust, leaving the darker and heavier sand beneath intact.  Dust devils not only look cool -- they can leave visible trails, and have been credited with unexpected cleanings of the surfaces of solar panels. The images in the featured AI-interpolated video were captured in early August by the Perseverance rover currently searching for signs of ancient life in Jezero Crater. The six-second time-lapse video encapsulates a real duration of just over one minute.  Visible in the distance, the spinning dust devil was estimated to be passing by at about 20 kilometers per hour and extend up about 2 kilometers high.   Your Sky Surprise: What picture did APOD feature on your birthday? (post 1995)",
+				"date": "2023-11-07",
+				"thumbnail_url": "https://img.youtube.com/vi/xB3QIEkNJgs/0.jpg"
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/Perseus_Euclid_960.jpg",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/Perseus_Euclid_4400.jpg",
+				"title": "Perseus Galaxy Cluster from Euclid",
+				"explanation": "There's a new space telescope in the sky: Euclid. Equipped with two large panoramic cameras, Euclid captures light from the visible to the near-infrared.  It took five hours of observing for Euclid's 1.2-meter diameter primary mirror  to capture, through its sharp optics, the 1000+ galaxies in the Perseus cluster, which lies 250 million light years away.  More than 100,000 galaxies are visible in the background, some as far away as 10 billion light years. The revolutionary nature of Euclid lies in the combination of its wide field of view (twice the area of the full moon), its high angular resolution (thanks to its 620 Megapixel camera), and its infrared vision, which captures both images and spectra.  Euclid's initial surveys, covering a third of the sky and recording over 2 billion galaxies, will enable a study of how dark matter and dark energy have shaped our universe.",
+				"date": "2023-11-08",
+				"thumbnail_url": null
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/M1_webb1024.png",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/M1_webb1024.png",
+				"title": "M1: The Crab Nebula",
+				"explanation": "The Crab Nebula is cataloged as M1, the first object on Charles Messier's famous 18th century list of things which are not comets. In fact, the Crab is now known to be a supernova remnant, debris from the death explosion of a massive star witnessed by astronomers in the year 1054. This sharp image from the James Webb Space Telescope’s NIRCam (Near-Infrared Camera) and MIRI (Mid-Infrared Instrument) explores the eerie glow and fragmented strands of the still expanding cloud of interstellar debris in infrared light. One of the most exotic objects known to modern astronomers, the Crab Pulsar, a neutron star spinning 30 times a second, is visible as a bright spot near the nebula's center. Like a cosmic dynamo, this collapsed remnant of the stellar core powers the Crab's emission across the electromagnetic spectrum. Spanning about 12 light-years, the Crab Nebula is a mere 6,500 light-years away in the head-strong constellation Taurus.   Album: Moon Eclipses Venus: Selected images sent in to APOD",
+				"date": "2023-11-09",
+				"thumbnail_url": null
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/uhz1_1024.jpg",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/uhz1.jpg",
+				"title": "UHZ1: Distant Galaxy and Black Hole",
+				"explanation": "Dominated by dark matter, massive cluster of galaxies Abell 2744 is known to some as Pandora's Cluster. It lies 3.5 billion light-years away toward the constellation Sculptor. Using the galaxy cluster's enormous mass as a gravitational lens to warp spacetime and magnify even more distant objects directly behind it, astronomers have found a background galaxy, UHZ1, at a remarkable redshift of Z=10.1. That puts UHZ1 far beyond Abell 2744, at a distance of 13.2 billion light-years, seen when our universe was about 3 percent of its current age. UHZ1 is identified in the insets of this composited image combining X-rays (purple hues) from the spacebased Chandra X-ray Observatory and infrared light from the James Webb Space Telescope. The X-ray emission from UHZ1 detected in the Chandra data is the telltale signature of a growing supermassive black hole at the center of the ultra high redshift galaxy.  That makes UHZ1's growing black hole the most distant black hole ever detected in X-rays, a result that now hints at how and when the first supermassive black holes in the universe formed.",
+				"date": "2023-11-10",
+				"thumbnail_url": null
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/SARarcLooten1024.jpg",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/SARarcLooten.jpg",
+				"title": "The SAR and the Milky Way",
+				"explanation": "This broad, luminous red arc was a surprising visitor to partly cloudy evening skies over northern France. Captured extending toward the zenith in a west-to-east mosaic of images from November 5, the faint atmospheric ribbon of light is an example of a Stable Auroral Red (SAR) arc. The rare night sky phenomenon was also spotted at unusually low latitudes around world, along with more dynamic auroral displays during an intense geomagnetic storm. SAR arcs and their relation to auroral emission have been explored by citizen science and satellite investigations. From altitudes substantially above the normal auroral glow, the deep red SAR emission is thought to be caused by strong heating due to currents flowing in planet Earth's inner magnetosphere. Beyond this SAR, the Milky Way arcs above the cloud banks along the horizon, a regular visitor to night skies over northern France.",
+				"date": "2023-11-11",
+				"thumbnail_url": null
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/GibbousMoon_Strand_960.jpg",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/GibbousMoon_Strand_1500.jpg",
+				"title": "Gibbous Moon beyond Swedish Mountain",
+				"explanation": "This is a gibbous Moon. More Earthlings are familiar with a full moon, when the entire face of Luna is lit by the Sun, and a crescent moon, when only a sliver of the Moon's face is lit.  When more than half of the Moon is illuminated, though, but still short of full illumination, the phase is called gibbous.  Rarely seen in television and movies, gibbous moons are quite common in the actual night sky. The featured image was taken in Jämtland, Sweden near the end of 2018 October. That gibbous moon turned, in a few days, into a crescent moon, and then a new moon, then back to a crescent, and a few days past that, back to gibbous.  Setting up to capture a picturesque gibbous moonscape, the photographer was quite surprised to find an airplane, surely well in the foreground, appearing to fly past it.   Almost Hyperspace: Random APOD Generator",
+				"date": "2023-11-12",
+				"thumbnail_url": null
+			},
+			{
+				"media_type": "image",
+				"url": "https://apod.nasa.gov/apod/image/2311/M31Alps_Kananovich_960.jpg",
+				"hdurl": "https://apod.nasa.gov/apod/image/2311/M31Alps_Kananovich_1639.jpg",
+				"title": "Andromeda over the Alps",
+				"explanation": "Have you ever seen the Andromeda galaxy? Although M31 appears as a faint and fuzzy blob to the unaided eye, the light you see will be over two million years old, making it likely the oldest light you ever will see directly. The featured image captured Andromeda just before it set behind the Swiss Alps early last year. As cool as it may be to see this neighboring galaxy to our Milky Way with your own eyes, long duration camera exposures can pick up many faint and breathtaking details. The image is composite of foreground and background images taken consecutively with the same camera and from the same location.  Recent data indicate that our Milky Way Galaxy will collide and coalesce with Andromeda galaxy in a few billion years.   Follow APOD on Facebook in: Arabic, English, Catalan, Portuguese, or Taiwanese",
+				"date": "2023-11-13",
+				"thumbnail_url": null
+			}
+		],
+		"headers": {
+			"Content-Type": "application/json"
+		}
+	}
+}
