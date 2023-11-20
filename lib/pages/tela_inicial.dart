@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_spacep/pages/ajuda.dart';
 import 'package:mobile_spacep/pages/calendario.dart';
 import 'package:mobile_spacep/pages/erro.dart';
+import 'package:http/http.dart' as http;
+import 'package:mobile_spacep/pages/utils.dart';
 
 class TelaInicial extends StatefulWidget {
   TelaInicial({super.key});
@@ -60,15 +62,27 @@ class _TelaInicialState extends State<TelaInicial> {
                   ),
                 ),
                 suffixIcon: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return CalendarioSpaceP(APIKEY: "FUNCIONA");
-                        },
+                  onTap: () async {
+                    var request = await http.get(
+                      Uri.http(
+                        Constantes.baseUrl,
+                        '/media/today',
+                        {'APIKEY': apiFormController.text},
                       ),
                     );
+                    if (request.statusCode == 404) {
+                      print(apiFormController.text);
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CalendarioSpaceP(
+                                APIKEY: apiFormController.text);
+                          },
+                        ),
+                      );
+                    }
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

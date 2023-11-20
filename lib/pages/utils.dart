@@ -20,3 +20,7 @@ Future<File> fromAsset(String asset, String filename) async {
 
   return completer.future;
 }
+
+class Constantes {
+  static const String baseUrl = 'localhost:9999';
+}
