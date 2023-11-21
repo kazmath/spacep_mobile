@@ -15,15 +15,11 @@ class ImageDesc extends StatefulWidget {
 }
 
 class _ImageDescState extends State<ImageDesc> {
-  late SharedPreferences prefs;
   //String linkImage = 'https://placehold.co/2000x1000.png';
 
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then((value) {
-      prefs = value;
-    });
   }
 
   @override
@@ -92,33 +88,57 @@ class _ImageDescState extends State<ImageDesc> {
                   ],
                 ),
                 Center(
-                    child: Text("data",
-                        style: TextStyle(color: Colors.white, fontSize: 25))),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => ImageFull(
-                          link: linkImage,
-                        ),
-                      ),
-                    );
-                  },
                   child: FutureBuilder(
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState != ConnectionState.done) {
-                        return CircularProgressIndicator();
-                      }
-                      return Image.network(jsonDecode(snapshot.data!)[],
-                          height: MediaQuery.of(context).size.height * .60);
-                    },
-                    future: SharedPreferences.getInstance().then((value) {
-                      return value.getString(
+                      future: SharedPreferences.getInstance().then((prefs) {
+                        return prefs.getString(
+                            DateFormat('yyyy-MM-dd').format(widget.data));
+                      }),
+                      builder: (context, snapshot) {
+                        return Text(
+                          snapshot.data != null ? jsonDecode(snapshot.data!)["title"] : "loading",
+                          style: TextStyle(color: Colors.white, fontSize: 25),
+                        );
+                      }),
+                ),
+                FutureBuilder(
+                    future: SharedPreferences.getInstance().then((prefs) {
+                      return prefs.getString(
                           DateFormat('yyyy-MM-dd').format(widget.data));
                     }),
-                  ),
-                ),
+                    builder: (context, snapshot) {
+                      return GestureDetector(
+                        onTap: () {
+                          if (snapshot.data == null) return;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => ImageFull(
+                                link: jsonDecode(snapshot.data!)["hdurl"] ??
+                                    jsonDecode(snapshot.data!)["thumbnail_url"],
+                              ),
+                            ),
+                          );
+                        },
+                        child: snapshot.data != null
+                            ? Image.network(
+                                jsonDecode(snapshot.data!)["hdurl"] ??
+                                    jsonDecode(snapshot.data!)["thumbnail_url"],
+                                height:
+                                    MediaQuery.of(context).size.height * .60)
+                            : SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * .60,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 150,
+                                      bottom: 150,
+                                      left: 60,
+                                      right: 60),
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                      );
+                    }),
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(left: 5, right: 5, top: 15),
@@ -130,9 +150,21 @@ class _ImageDescState extends State<ImageDesc> {
                       padding: const EdgeInsets.all(8.0),
                       child: ListView(
                         children: [
-                          Text("696969",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18)),
+                          FutureBuilder(
+                              future:
+                                  SharedPreferences.getInstance().then((prefs) {
+                                return prefs.getString(DateFormat('yyyy-MM-dd')
+                                    .format(widget.data));
+                              }),
+                              builder: (context, snapshot) {
+                                return Text(
+                                    snapshot.data != null
+                                        ? jsonDecode(
+                                            snapshot.data!)["explanation"]
+                                        : "loading",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18));
+                              }),
                         ],
                       ),
                     ),
