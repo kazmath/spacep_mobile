@@ -7,6 +7,7 @@ import 'package:mobile_spacep/pages/erro.dart';
 import 'package:mobile_spacep/pages/imagem.dart';
 import 'package:mobile_spacep/pages/imagem_full.dart';
 import 'package:mobile_spacep/pages/tela_inicial.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MainApp());
