@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_spacep/pages/imagem_full.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ImageDesc extends StatefulWidget {
   final DateTime data;
@@ -12,7 +15,16 @@ class ImageDesc extends StatefulWidget {
 }
 
 class _ImageDescState extends State<ImageDesc> {
-  String linkImage = "http://placehold.co/400x600.png";
+  late SharedPreferences prefs;
+  //String linkImage = 'https://placehold.co/2000x1000.png';
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((value) {
+      prefs = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +105,19 @@ class _ImageDescState extends State<ImageDesc> {
                       ),
                     );
                   },
-                  child: Image.network(linkImage,
-                      height: MediaQuery.of(context).size.height * .60),
+                  child: FutureBuilder(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState != ConnectionState.done) {
+                        return CircularProgressIndicator();
+                      }
+                      return Image.network(jsonDecode(snapshot.data!)[],
+                          height: MediaQuery.of(context).size.height * .60);
+                    },
+                    future: SharedPreferences.getInstance().then((value) {
+                      return value.getString(
+                          DateFormat('yyyy-MM-dd').format(widget.data));
+                    }),
+                  ),
                 ),
                 Expanded(
                   child: Container(
