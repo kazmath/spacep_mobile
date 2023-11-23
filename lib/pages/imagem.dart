@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_spacep/pages/imagem_full.dart';
+import 'package:mobile_spacep/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ImageDesc extends StatefulWidget {
@@ -42,16 +43,14 @@ class _ImageDescState extends State<ImageDesc> {
                     IconButton(
                       color: Colors.white,
                       icon: Icon(Icons.arrow_back),
-                      onPressed: () {
-                        Navigator.pushReplacement(
+                      onPressed: () async {
+                        maybeOpenImage(
+                          await SharedPreferences.getInstance(),
                           context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) => ImageDesc(
-                              data: widget.data.subtract(
-                                Duration(days: 1),
-                              ),
-                            ),
+                          widget.data.subtract(
+                            Duration(days: 1),
                           ),
+                          true,
                         );
                       },
                     ),
@@ -72,16 +71,14 @@ class _ImageDescState extends State<ImageDesc> {
                     IconButton(
                       color: Colors.white,
                       icon: Icon(Icons.arrow_forward),
-                      onPressed: () {
-                        Navigator.pushReplacement(
+                      onPressed: () async {
+                        maybeOpenImage(
+                          await SharedPreferences.getInstance(),
                           context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) => ImageDesc(
-                              data: widget.data.add(
-                                Duration(days: 1),
-                              ),
-                            ),
+                          widget.data.add(
+                            Duration(days: 1),
                           ),
+                          true,
                         );
                       },
                     ),
@@ -95,7 +92,9 @@ class _ImageDescState extends State<ImageDesc> {
                       }),
                       builder: (context, snapshot) {
                         return Text(
-                          snapshot.data != null ? jsonDecode(snapshot.data!)["title"] : "loading",
+                          snapshot.data != null
+                              ? jsonDecode(snapshot.data!)["title"]
+                              : "loading",
                           style: TextStyle(color: Colors.white, fontSize: 25),
                         );
                       }),
@@ -113,16 +112,26 @@ class _ImageDescState extends State<ImageDesc> {
                             context,
                             MaterialPageRoute<void>(
                               builder: (BuildContext context) => ImageFull(
-                                link: jsonDecode(snapshot.data!)["hdurl"] ??
+                                link: switch (
+                                    jsonDecode(snapshot.data!)["media_type"]) {
+                                  "video" =>
                                     jsonDecode(snapshot.data!)["thumbnail_url"],
+                                  _ =>
+                                    jsonDecode(snapshot.data!)["hdurl"]
+                                },
                               ),
                             ),
                           );
                         },
                         child: snapshot.data != null
                             ? Image.network(
-                                jsonDecode(snapshot.data!)["hdurl"] ??
+                                switch (
+                                    jsonDecode(snapshot.data!)["media_type"]) {
+                                  "video" =>
                                     jsonDecode(snapshot.data!)["thumbnail_url"],
+                                  _ =>
+                                    jsonDecode(snapshot.data!)["url"]
+                                },
                                 height:
                                     MediaQuery.of(context).size.height * .60)
                             : SizedBox(

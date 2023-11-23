@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_spacep/pages/ajuda.dart';
 import 'package:mobile_spacep/pages/calendario.dart';
 import 'package:mobile_spacep/pages/erro.dart';
-import 'package:http/http.dart' as http;
-import 'package:mobile_spacep/pages/utils.dart';
+import 'package:mobile_spacep/services/ping.dart';
 
 class TelaInicial extends StatefulWidget {
   TelaInicial({super.key});
@@ -63,13 +62,7 @@ class _TelaInicialState extends State<TelaInicial> {
                 ),
                 suffixIcon: GestureDetector(
                   onTap: () async {
-                    var request = await http.get(
-                      Uri.http(
-                        Constantes.baseUrl,
-                        '/media/today',
-                        {'APIKEY': apiFormController.text},
-                      ),
-                    );
+                    var request = await ping(apiFormController.text);
                     if (request.statusCode == 404) {
                       print(apiFormController.text);
                     } else {
@@ -124,4 +117,6 @@ class _TelaInicialState extends State<TelaInicial> {
       ),
     );
   }
+
+  
 }

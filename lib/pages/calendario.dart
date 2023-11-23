@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:mobile_spacep/pages/erro.dart';
 import 'package:mobile_spacep/pages/imagem.dart';
 import 'package:mobile_spacep/pages/tela_inicial.dart';
-import 'package:mobile_spacep/pages/utils.dart';
+import 'package:mobile_spacep/utils.dart';
+import 'package:mobile_spacep/services/save.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 class CalendarioSpaceP extends StatefulWidget {
@@ -22,7 +22,7 @@ class _CalendarioSpacePState extends State<CalendarioSpaceP> {
   late DateTime _focusedDay;
 
   DateTime? _selectedDay;
-  
+
   late SharedPreferences prefs;
 
   @override
@@ -31,12 +31,8 @@ class _CalendarioSpacePState extends State<CalendarioSpaceP> {
     SharedPreferences.getInstance().then((value) {
       prefs = value;
     });
-    http
-        .get(Uri.http(
-            Constantes.baseUrl, '/media/save', {'APIKEY': widget.APIKEY}))
-        .then((value) async {
+    save(widget.APIKEY).then((value) async {
       for (var element in jsonDecode(value.body)) {
-        
         prefs.setString(element['date'], jsonEncode(element));
       }
     });
@@ -128,23 +124,7 @@ class _CalendarioSpacePState extends State<CalendarioSpaceP> {
                           titleCentered: true,
                         ),
                         onDaySelected: (_, focusedDay) {
-                          print(focusedDay);
-                          String diahoje = DateFormat('yyyy-MM-dd').format(focusedDay);
-                          if (prefs.getString(diahoje) != null) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    ImageDesc(data: focusedDay),
-                              ),
-                            );
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (context) => DialgErro(),
-                            );
-                          }
-                          ;
+                          maybeOpenImage(prefs, context, focusedDay, false);
                         },
                       ),
                     ),
@@ -158,3 +138,5 @@ class _CalendarioSpacePState extends State<CalendarioSpaceP> {
     );
   }
 }
+
+

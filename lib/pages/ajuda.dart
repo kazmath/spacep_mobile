@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:mobile_spacep/pages/utils.dart';
+import 'package:mobile_spacep/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TelaAjuda extends StatelessWidget {
