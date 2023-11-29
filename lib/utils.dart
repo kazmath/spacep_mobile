@@ -27,7 +27,7 @@ Future<File> fromAsset(String asset, String filename) async {
 }
 
 class Constantes {
-  static const String baseUrl = 'localhost:9999';
+  static const String baseUrl = 'localhost:8080';
 }
 
 void maybeOpenImage(

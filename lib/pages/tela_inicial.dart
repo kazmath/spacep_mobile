@@ -63,7 +63,7 @@ class _TelaInicialState extends State<TelaInicial> {
                 suffixIcon: GestureDetector(
                   onTap: () async {
                     var request = await ping(apiFormController.text);
-                    if (request.statusCode == 404) {
+                    if (request.statusCode == 500) {
                       print(apiFormController.text);
                     } else {
                       Navigator.push(
