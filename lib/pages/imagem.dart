@@ -117,7 +117,7 @@ class _ImageDescState extends State<ImageDesc> {
                                   "video" =>
                                     jsonDecode(snapshot.data!)["thumbnail_url"],
                                   _ =>
-                                    jsonDecode(snapshot.data!)["hdurl"]
+                                    jsonDecode(snapshot.data!)["image"]["hdurl"]
                                 },
                               ),
                             ),
